@@ -181,15 +181,15 @@ public class RandomizedQueueTest {
     public static void main(String[] args) {
         // Uncomment each test as you implement the corresponding method:
 
-        // testRandomizedQueueConstructor();
-        // testRandomizedQueueIsEmpty();
-        // testRandomizedQueueSize();
-        // testRandomizedQueueEnqueue();
-        // testRandomizedQueueEnqueueNull();
-        // testRandomizedQueueDequeue();
-        // testRandomizedQueueDequeueEmpty();
-        // testRandomizedQueueSample();
-        // testRandomizedQueueSampleEmpty();
+        testRandomizedQueueConstructor();
+        testRandomizedQueueIsEmpty();
+        testRandomizedQueueSize();
+        testRandomizedQueueEnqueue();
+        testRandomizedQueueEnqueueNull();
+        testRandomizedQueueDequeue();
+        testRandomizedQueueDequeueEmpty();
+        testRandomizedQueueSample();
+        testRandomizedQueueSampleEmpty();
         // testRandomizedQueueIterator();
         // testRandomizedQueueIteratorIndependence();
         // testRandomizedQueueIteratorRandomOrder();

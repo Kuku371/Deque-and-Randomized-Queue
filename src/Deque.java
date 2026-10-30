@@ -47,23 +47,31 @@ public class Deque<Item> implements Iterable<Item> {
     /** Add an item to the front; reject null items with IllegalArgumentException. */
     public void addFirst(Item item) {
         // TODO: Create a node and link it at the front; update head/tail pointers.
-        Node newity = new Node(item);
-        newity.next=head.next;
-        head.next=newity;
-        newity.next.prev=newity;
-        newity.prev=head;
-        size++;
+        if (item==null){
+            throw new IllegalArgumentException("67");
+        } else{
+            Node newity = new Node(item);
+            newity.next=head.next;
+            head.next=newity;
+            newity.next.prev=newity;
+            newity.prev=head;
+            size++;
+        }
     }
 
     /** Add an item to the back; reject null items with IllegalArgumentException. */
     public void addLast(Item item) {
         // TODO: Create a node and link it at the back; update head/tail pointers.
-        Node newity = new Node(item);
-        newity.prev=tail.prev;
-        tail.prev=newity;
-        newity.prev.next = newity;
-        newity.next=tail;
-        size++;
+        if (item==null){
+            throw new IllegalArgumentException("67");
+        } else {
+            Node newity = new Node(item);
+            newity.prev = tail.prev;
+            tail.prev = newity;
+            newity.prev.next = newity;
+            newity.next = tail;
+            size++;
+        }
     }
 
     /** Remove and return the front item; throw NoSuchElementException if empty. */
