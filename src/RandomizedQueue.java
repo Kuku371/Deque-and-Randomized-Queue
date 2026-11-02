@@ -36,6 +36,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             newarrity[i]=items[i];
         }
         items = newarrity;
+
     }
 
     /** Add an item; reject null with IllegalArgumentException. */
@@ -66,6 +67,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             if (size == items.length / 4) {
                 resize(items.length / 2);
             }
+            size--;
 
             return curity;
 
@@ -78,7 +80,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     /** Return a uniformly random item without removing it; throw NoSuchElementException if empty. */
     public Item sample() {
         // TODO: Pick a random index between 0 and size-1 and return that array item without removing it.
-        return null;
+        return items[(int) Math.floor(Math.random()*size)];
     }
 
     /** Return an independent iterator in uniformly random order; define next() and remove() exceptions. */
@@ -86,12 +88,25 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Iterator<Item> iterator() {
         // TODO: Return an independent iterator that traverses the array items in random order.
 
-
-        return null;
+        return new RandomizedQueueIterator();
     }
     private class RandomizedQueueIterator implements Iterator<Item>{
         private Item[] shuffledItems;
         private int current;
+
+        RandomizedQueueIterator(){
+            shuffledItems = (Item[]) new Object[size];
+            for (int i=0; i<size; i++){
+                shuffledItems[i]=items[i];
+            }
+            for (int i=0; i<2*size; i++){
+                int j = (int) Math.floor(size*Math.random()); int k = (int) Math.floor(size*Math.random());
+                Item swappity = shuffledItems[j];
+                shuffledItems[j]=shuffledItems[k];
+                shuffledItems[k]=swappity;
+            }
+        }
+
         @Override
         public boolean hasNext() {
             return current<size;
@@ -99,7 +114,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
-            return null;
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Item item = shuffledItems[current];
+            current++;
+            return item;
         }
     }
 
